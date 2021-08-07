@@ -1,8 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import {useWindowDimensions} from 'react-native';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 
+import {List} from './styles';
+
 export default function App() {
+  const {height} = useWindowDimensions();
+  const absoluteTopPosition = 150;
+
   const db = [
     { id: "1", name: 'item 1'},
     { id: "2", name: 'item 2'},
@@ -23,7 +29,10 @@ export default function App() {
       <View style={styles.header}>
         <Text style={styles.headerText}>HEADER</Text>
       </View>
-      <View style={styles.wrapper}>
+      <View style={[styles.wrapper, {
+        height: height - absoluteTopPosition,
+        top: absoluteTopPosition,
+      }]}>
         <Text style={styles.title}>Lista de items!</Text>
         <FlatList 
           data={db}
@@ -58,9 +67,9 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     width: '100%',
-    height: '100%', // colocando 80% todos items ficam visíveis 
+    // height: '100%', // colocando 80% todos items ficam visíveis 
     position: 'absolute',
-    marginTop: 150,
+    // marginTop: 150,
 
     backgroundColor: '#F0EDF5',
 
