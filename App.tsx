@@ -3,8 +3,6 @@ import React from 'react';
 import {useWindowDimensions} from 'react-native';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 
-import {List} from './styles';
-
 export default function App() {
   const {height} = useWindowDimensions();
   const absoluteTopPosition = 150;
